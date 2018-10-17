@@ -21,33 +21,33 @@ var movies = [{
 
 var MovieTitle = React.createClass({
     propTypes: {
-        data: React.PropTypes.object.isRequired,
+        title: React.PropTypes.object.isRequired,
     },
     render: function () {
         return (
-            React.createElement('h2', {
-                src: this.props.data.title
-            })
+            React.createElement('h2', {},
+                this.props.data.title
+            )
         )
     }
 });
 
 var MovieDescription = React.createClass({
     propTypes: {
-        data: React.PropTypes.object.isRequired,
+        desc: React.PropTypes.object.isRequired,
     },
     render: function () {
         return (
-            React.createElement('p', {
-                src: this.props.data.desc
-            })
+            React.createElement('p', {},
+                this.props.data.desc
+            )
         )
     }
 });
 
 var MovieImage = React.createClass({
     propTypes: {
-        image: React.PropTypes.object.isRequired,
+        pic: React.PropTypes.object.isRequired,
     },
     render: function () {
         return (
@@ -72,7 +72,7 @@ var MovieList = React.createClass({
                     title: this.props.movie.title
                 }),
                 React.createElement(MovieDescription, {
-                    director: this.props.movie.desc
+                    desc: this.props.movie.desc
                 }),
                 React.createElement(MovieImage, {
                     img: this.props.movie.pic
@@ -83,16 +83,21 @@ var MovieList = React.createClass({
 });
 
 var moviesElements = movies.map(function (movie) {
-    return React.createElement(Movie, {
+    return React.createElement(MovieList, {
         key: movie.id,
-        data: movie
+        movie: movie
     });
 });
 
-var element =
-    React.createElement('div', {},
-        React.createElement('h1', {}, 'Lista filmów'),
-        React.createElement('ul', {}, moviesElements)
-    );
+var moviesList = React.createClass({
+    render: function() {
+        return (React.createElement('ul', {}, moviesElements));
+    }
+});
 
+
+var element = React.createElement('div', {},
+    React.createElement('h1', {}, 'Lista filmów'),
+    React.createElement(moviesList, {})
+);
 ReactDOM.render(element, document.getElementById('app'));
