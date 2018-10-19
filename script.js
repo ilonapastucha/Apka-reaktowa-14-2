@@ -26,7 +26,7 @@ var MovieTitle = React.createClass({
     render: function () {
         return (
             React.createElement('h2', {},
-                this.props.data.title
+                this.props.title
             )
         )
     }
@@ -39,7 +39,7 @@ var MovieDescription = React.createClass({
     render: function () {
         return (
             React.createElement('p', {},
-                this.props.data.desc
+                this.props.desc
             )
         )
     }
@@ -52,7 +52,7 @@ var MovieImage = React.createClass({
     render: function () {
         return (
             React.createElement('img', {
-                src: this.props.pic
+                src: this.props.img
             })
         );
     }
@@ -65,9 +65,7 @@ var MovieList = React.createClass({
     },
     render: function () {
         return (
-            React.createElement('li', {
-                    src: this.props.movie.id
-                },
+            React.createElement('li', {},
                 React.createElement(MovieTitle, {
                     title: this.props.movie.title
                 }),
