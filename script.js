@@ -47,7 +47,7 @@ var MovieDescription = React.createClass({
 
 var MovieImage = React.createClass({
     propTypes: {
-        pic: React.PropTypes.object.isRequired,
+        img: React.PropTypes.object.isRequired,
     },
     render: function () {
         return (
